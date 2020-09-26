@@ -1,13 +1,12 @@
 <!--  
 	Desenvolvido por https://github.com/Alexandro-845
 	Versão 1.0 - 2020
+	
+	PUXAR DADOS DO LOGIN PARA ESTÁ PÁGINA, FAZER FUNÇÃO PARA DESLOGAR
 -->
 <?php
-	session_start();
 	ini_set('display_errors', 0 );
 	error_reporting(0);
-
-	//include('verifica_login.php');
 ?>
 <html>
 	<head>
@@ -21,18 +20,24 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="perfil.php">Bem Vindo, <?php echo $_SESSION['userName'];?>!</a></li>
-		<li style="float:right"><a id="logout" title="Click to Logout" href="" onclick="signOut();return false;">Sair</a></li>
+		<li style="float:left"><a href="perfil.php">
+			<script>
+				if(auth2.isSignedIn.get()){
+					var profile = auth2.currentUser.get().getBasicProfile();
+					console.log('Bem Vindo, ' + profile.getName()'!');
+				}
+			</script>
+		</a></li>
+		<li style="float:right"><a id="logout" title="Click to Logout" href="?exit" onclick="revokeAllScopes();">Sair</a></li>
 		<li style="float:right"><a href="Cex.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
-	
-	<script>
-		function signOut(){
-		var auth2 = gapi.auth2.getAuthInstance();
-		
-		auth2.signOut().then(function(){
-		  console.log('Logout Com Sucesso!');
-		});
+	<script><!--Logout->
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+			  console.log('Logout Com Sucesso!');
+			  window.location.href ="index.php";
+			});
 		  }
 	</script>
 	
@@ -46,28 +51,28 @@
 				<th width="150">
 					<a onclick="classificacao()" class="dropbtn">Categoria</a>
 						<div id="classificacao" class="dropdown-content">
-							<a href="Admin.php?ordem=class">Ordenar por Categoria</a>
+							<a href="?ordem=class">Ordenar por Categoria</a>
 						</div>
 				</th>
 				<th width="75">
 					<a onclick="dificuldade()" class="dropbtn">Nivel</a>
 						<div id="dificuldade" class="dropdown-content">
-							<a href="Admin.php?ordem=level&value=asc">Crescente</a>
-							<a href="Admin.php?ordem=level&value=desc">Decrescente</a>
+							<a href="?ordem=level&value=asc">Crescente</a>
+							<a href="?ordem=level&value=desc">Decrescente</a>
 						</div>
 				</th>
                 <th width="415">Descrição</th>
 				<th width="160">
 					<a onclick="tipo()" class="dropbtn">Classificação</a>
 						<div id="tipo" class="dropdown-content">
-							<a href="Admin.php?ordem=type">Ordenar Por tipo</a>
+							<a href="?ordem=type">Ordenar Por tipo</a>
 						</div>
 				</th>			 					
 				<th width="120" >
 					<a onclick="dificuldadee2pc()" class="dropbtn">Dificuldade</a>
 						<div id="dificuldadee2pc" class="dropdown-content">
-							<a href="Admin.php?ordem=level2pc&value=asc">Crescente</a>
-							<a href="Admin.php?ordem=level2pc&value=desc">Decrescente</a>
+							<a href="?ordem=level2pc&value=asc">Crescente</a>
+							<a href="?ordem=level2pc&value=desc">Decrescente</a>
 						</div>
 				</th>	
 				<th width="100">Código</th>
