@@ -1,5 +1,5 @@
 <!--  
-	Desenvolvido por https://github.com/Alexandro-845
+	Desenvolvido por https://github.com/AlexandroLuis
 	Versão 1.0 - 2020
 -->
 <html>
@@ -25,7 +25,7 @@
 		console.log(element.id);
 		auth2.attachClickHandler(element, {},
 			function(googleUser) {
-				window.location.href = "Admin.php";
+				window.location.href = "MainInformationPage.php";
 			}, function(error) {
 				alert("Erro!");
 			});
