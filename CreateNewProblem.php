@@ -5,8 +5,14 @@
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
-	
-	//include('verifica_login.php');
+		
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>
@@ -20,9 +26,9 @@
 	</head>
 <body align="center">
 	<ul>
-		<li style="float:left"><a href="perfil.php">Bem Vindo, <?php echo $_SESSION['userName'];?>!</a></li>
-		<li style="float:right"><a href="Cex.php">Recarregar</a></li>
-		<li style="float:right"><a href="Admin.php">Página Inicial</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:right"><a href="CreateNewProblem.php">Recarregar</a></li>
+		<li style="float:right"><a href="MainInformationPage.php">Página Inicial</a></li>
 	</ul>
 	
 	<h2>Cadastrar Exercicios Uri</h2>

@@ -1,12 +1,18 @@
 <!--  
 	Desenvolvido por https://github.com/AlexandroLuis
 	Versão 1.0 - 2020
-	
-	PUXAR DADOS DO LOGIN PARA ESTÁ PÁGINA, FAZER FUNÇÃO PARA DESLOGAR
 -->
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
+	
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>
@@ -20,15 +26,8 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php">
-			<script>
-				if(auth2.isSignedIn.get()){
-					var profile = auth2.currentUser.get().getBasicProfile();
-					console.log('Bem Vindo, ' + profile.getName()'!');
-				}
-			</script>
-		</a></li>
-		<li style="float:right"><a id="logout" title="Click to Logout" href="?exit" onclick="revokeAllScopes();">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="CreateNewProblem.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 	<script><!--Logout->

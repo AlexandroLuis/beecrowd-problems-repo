@@ -6,7 +6,13 @@
 	ini_set('display_errors', 0 );
 	error_reporting(0);
 	
-	//include('verifica_login.php');
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>
@@ -28,8 +34,8 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php">Bem Vindo, <?php echo $_SESSION['userName'];?>!</a></li>
-		<li style="float:right"><a href="">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 

@@ -3,8 +3,16 @@
 	Versão 1.0 - 2020
 -->
 <?php
-		ini_set('display_errors', 0 );
-		error_reporting(0);
+	ini_set('display_errors', 0 );
+	error_reporting(0);
+			
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>	
