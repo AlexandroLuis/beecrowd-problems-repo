@@ -37,7 +37,21 @@
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 
-    <h2 align ="center">Editar Informações do Exercício <?php  $id=$_GET['id']; echo"$id"; ?>!</h2>
+    <h2 align ="center">Editar Informações do Exercício 
+		<?php  
+			$id=$_GET['id'];
+			require('Connection.php');
+						
+			$nome = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
+
+			while($row2 = mysqli_fetch_assoc($nome)){
+				echo"<tr>
+					 <td></td>
+					 <td>" .$row2['id'] .",</td>
+					 <td>" .$row2['name'] ."!</td>";
+			}
+		?>
+	</h2>
 	<form class="form-style-8" action="EditProblemMysqlConnection.php" method="GET" />
 		<div style="float:center">
 			<input name="class" type="hidden" value ="<?php echo $row['class']?>"<br>

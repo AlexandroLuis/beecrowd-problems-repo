@@ -26,7 +26,7 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
 		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="CreateNewProblem.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
@@ -74,7 +74,7 @@
 						</div>
 				</th>
 				<th width="200">Mais Informações</th>
-				<th width="150">Editar Informações</th>
+				<th width="150">Editar Problemas</th>
             </tr><!-- Fim Lista de Problemas -->
 			
 			<script><!-- Função para fazer o  dropdown -->
@@ -127,8 +127,8 @@
 							<td>" .$row['level'] ."</td>
 							<td>" .$row['type'] ."</td>
 							<td>" .$row['level2pc'] ."</td>
-							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar Informações</a></td>
-							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar Problema</a></td>";
+							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar</a></td>
+							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar</a></td>";
 				}
 				mysqli_free_result($result);
 			?>

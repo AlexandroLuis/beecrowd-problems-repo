@@ -26,14 +26,15 @@
 	</head>
 <body align="center">
 	<ul>
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
 		<li style="float:right"><a href="CreateNewProblem.php">Recarregar</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Página Inicial</a></li>
+		<li style="float:right"><a href="https://e2pc.github.io/">Compilador Online</a></li>
 	</ul>
 	
 	<h2>Cadastrar Exercicios Uri</h2>
 	
-	<form class="form-style-8" action="cadastro_exercicios.php" method="POST" />
+	<form class="form-style-8" action="CreateNewProblemMysqlConnection.php" method="POST" />
 		<div style="float:center">
 			<input type="text" class="w3-input" name="id" size="50" placeholder="ID:"/><br>
 			<input type="text" class="w3-input" name="name" size="50" placeholder="Nome:"/><br>
