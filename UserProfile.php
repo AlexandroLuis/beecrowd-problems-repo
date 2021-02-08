@@ -13,13 +13,48 @@
 		header('Location: index.php');
 		exit();
 	}
+	
+	$id=$_GET['id'];
+	require('Connection.php');
+		
+	$result = mysqli_query($db, "SELECT * FROM usuarios where id=$id");
+	$row = mysqli_fetch_assoc($result);
 ?>
 <html>
 	<head>	
 		<meta charset="utf-8">
 		<title>Perfil de Usuario</title>
-		<meta http-equiv="refresh" content="2; url=MainInformationPage.php">
-		<script type="text/javascript"></script>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="Style/style.css">
 		<link rel="shortcut icon" href="Images/favicon.ico" />
+		<script src="https://apis.google.com/js/platform.js" async defer></script> 
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+		<meta name="google-signin-client_id" content="384602407862-g2t95qbtuto07r923qlic2317dbrkboa.apps.googleusercontent.com">
 	</head>
+<body>
+	<ul><!-- Menu Inicial -->
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
+		<li style="float:right"><a href="logout.php">Sair</a></li>
+		<li style="float:right"><a href="MainInformationPage.php">Página de Problemas</a></li>	
+	</ul><!-- Fim Menu Inicial -->
+	
+	<script><!--Logout->
+		function signOut() {
+			var auth2 = gapi.auth2.getAuthInstance();
+			auth2.signOut().then(function () {
+			  console.log('Logout Com Sucesso!');
+			  window.location.href ="index.php";
+			});
+		  }
+	</script>
+	
+	<form class="form-style-8" action="EditUserProfileMysqlConnection.php" method="GET" />
+		<div style="float:center">	
+			<h5 style="float:left">Editar Senha:</h5>
+			<input type="text" class="w3-input" name="name" size="50"><br>
+			<input type="submit" style="float:right" value="Editar"/><br><br>
+		</div>
+	</form>
+
+</body>
 </html>
