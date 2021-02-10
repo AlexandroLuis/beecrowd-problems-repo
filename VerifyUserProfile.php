@@ -1,7 +1,3 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2020
--->
 <?php
 	session_start();	
 	include_once("Connection.php");	
