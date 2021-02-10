@@ -6,7 +6,15 @@
 	ini_set('display_errors', 0 );
 	error_reporting(0);
 	
-	//include('verifica_login.php');
+	require('Connection.php');
+	
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>
@@ -28,33 +36,44 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php">Bem Vindo, <?php echo $_SESSION['userName'];?>!</a></li>
-		<li style="float:right"><a href="">Sair</a></li>
-		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
+		<li style="float:right"><a href="Logout.php">Sair</a></li>
+		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>
+		<li style="float:right"><a href="https://e2pc.github.io/">Compilador Online</a></li>		
 	</ul><!-- Fim Menu Inicial -->
 
-    <h2 align ="left">Informações do Exercicio <?php  $id=$_GET['id']; echo"$id"; ?>!</h2><br>
-	
 	<!-- Recebe Um id Por Parametro e Mostra as informações do exercicio -->
-	<?php
-		require('Connection.php');
-					
-		$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
+    <h2 align ="center">Informações do Exercicio 
+		<?php  
+			$id=$_GET['id'];
+			require('Connection.php');
+						
+			$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
 
-		while($row = mysqli_fetch_assoc($result)) {
-			echo "<tr>
-				<td></td>
-				<td>" ."<a href=editarproblema.php?id=".$row['id'] .">".$row['id'] ."</a></td>
-				<td>" ."<a href=https://www.urionlinejudge.com.br/judge/pt/problems/view/".$row['id'] .">".$row['name'] ."</a></td>
-				<td>" .$row['class'] ."</td>
-				<td>" .$row['level'] ."</td>
-				<td>" .$row['description'] ."</td>
-				<td>" .$row['type'] ."</td>
-				<td>" .$row['level2pc'] ."</td>";							
-		}
+			while($row = mysqli_fetch_assoc($result)){
+				echo"<tr>
+					 <td></td>
+					 <td>" .$row['id'] .",</td>
+					 <td>" .$row['name'] ."!</td>";
+			}
+		?>
+	</h2><br>
+	<h4 align ="left"> 
+		<?php  
+			$id=$_GET['id'];
+			require('Connection.php');
+						
+			$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
 
-	?>
-	<pre background color="white">
+			while($row = mysqli_fetch_assoc($result)){
+				echo"Descrição: " .$row['description'] ."\n";
+				?><br><?php
+				echo"Observações: " .$row['Observation'] ."";
+			}
+		?>
+	</h4>
+
+	<pre background color ="white">
 		<?php
 			require('Connection.php');
 					

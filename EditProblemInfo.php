@@ -5,8 +5,14 @@
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
-	
-	//include('verifica_login.php');
+		
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 	
 	$id=$_GET['id'];
 	require('Connection.php');
@@ -26,12 +32,26 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php">Bem Vindo, <?php echo $_SESSION['userName'];?>!</a></li>
-		<li style="float:right"><a href="">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
+		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 
-    <h2 align ="center">Editar Informações do Exercício <?php  $id=$_GET['id']; echo"$id"; ?>!</h2>
+    <h2 align ="center">Editar Informações do Exercício 
+		<?php  
+			$id=$_GET['id'];
+			require('Connection.php');
+						
+			$nome = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
+
+			while($row2 = mysqli_fetch_assoc($nome)){
+				echo"<tr>
+					 <td></td>
+					 <td>" .$row2['id'] .",</td>
+					 <td>" .$row2['name'] ."!</td>";
+			}
+		?>
+	</h2>
 	<form class="form-style-8" action="EditProblemMysqlConnection.php" method="GET" />
 		<div style="float:center">
 			<input name="class" type="hidden" value ="<?php echo $row['class']?>"<br>

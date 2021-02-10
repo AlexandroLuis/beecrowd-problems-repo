@@ -1,12 +1,18 @@
 <!--  
 	Desenvolvido por https://github.com/AlexandroLuis
 	Versão 1.0 - 2020
-	
-	PUXAR DADOS DO LOGIN PARA ESTÁ PÁGINA, FAZER FUNÇÃO PARA DESLOGAR
 -->
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
+	
+	session_cache_expire(60);
+	session_start(); 
+
+	if(!$_SESSION['usuarioNome']) {
+		header('Location: index.php');
+		exit();
+	}
 ?>
 <html>
 	<head>
@@ -20,15 +26,8 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php">
-			<script>
-				if(auth2.isSignedIn.get()){
-					var profile = auth2.currentUser.get().getBasicProfile();
-					console.log('Bem Vindo, ' + profile.getName()'!');
-				}
-			</script>
-		</a></li>
-		<li style="float:right"><a id="logout" title="Click to Logout" href="?exit" onclick="revokeAllScopes();">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
+		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="CreateNewProblem.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 	<script><!--Logout->
@@ -75,7 +74,7 @@
 						</div>
 				</th>
 				<th width="200">Mais Informações</th>
-				<th width="150">Editar Informações</th>
+				<th width="150">Editar Problemas</th>
             </tr><!-- Fim Lista de Problemas -->
 			
 			<script><!-- Função para fazer o  dropdown -->
@@ -128,8 +127,8 @@
 							<td>" .$row['level'] ."</td>
 							<td>" .$row['type'] ."</td>
 							<td>" .$row['level2pc'] ."</td>
-							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar Informações</a></td>
-							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar Problema</a></td>";
+							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar</a></td>
+							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar</a></td>";
 				}
 				mysqli_free_result($result);
 			?>
