@@ -5,15 +5,19 @@
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
-		
+	
 	session_cache_expire(60);
 	session_start(); 
+	
+	/* REALMENTE PHP ... */
+		$_SESSION['usuario'] = $_COOKIE['usuario'];
+		$_SESSION['id'] = $_COOKIE['id'];
 
-	if(!$_SESSION['usuarioNome']) {
+	if(!$_SESSION['usuario']) {
 		header('Location: index.php');
 		exit();
 	}
-	
+ 
 	$id=$_GET['id'];
 	require('Connection.php');
 		
@@ -32,8 +36,8 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?></a></li>
-		<li style="float:right"><a href="logout.php">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?></a></li>
+		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 

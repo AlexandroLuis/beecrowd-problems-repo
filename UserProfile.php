@@ -5,19 +5,23 @@
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
-			
+	
 	session_cache_expire(60);
 	session_start(); 
+	
+	/* REALMENTE PHP ... */
+		$_SESSION['usuario'] = $_COOKIE['usuario'];
+		$_SESSION['id'] = $_COOKIE['id'];
 
-	if(!$_SESSION['usuarioNome']) {
+	if(!$_SESSION['usuario']) {
 		header('Location: index.php');
 		exit();
 	}
-	
+
 	$id=$_GET['id'];
 	require('Connection.php');
 		
-	$result = mysqli_query($db, "SELECT * FROM usuarios where id=$id");
+	$result = mysqli_query($db, "SELECT * FROM usuario where id=$id");
 	$row = mysqli_fetch_assoc($result);
 ?>
 <html>
@@ -33,20 +37,11 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?>!</a></li>
 		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Página de Problemas</a></li>	
 	</ul><!-- Fim Menu Inicial -->
-	
-	<script><!--Logout->
-		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-			  console.log('Logout Com Sucesso!');
-			  window.location.href ="index.php";
-			});
-		  }
-	</script>
+
 	
 	<form class="form-style-8" action="EditUserProfileMysqlConnection.php" method="GET" />
 		<div style="float:center">	

@@ -8,8 +8,12 @@
 	
 	session_cache_expire(60);
 	session_start(); 
+	
+	/* REALMENTE PHP ... */
+		$_SESSION['usuario'] = $_COOKIE['usuario'];
+		$_SESSION['id'] = $_COOKIE['id'];
 
-	if(!$_SESSION['usuarioNome']) {
+	if(!$_SESSION['usuario']) {
 		header('Location: index.php');
 		exit();
 	}
@@ -26,19 +30,10 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuarioNome']; ?>!</a></li>
-		<li style="float:right"><a href="logout.php">Sair</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuario']; ?>!</a></li>
+		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="CreateNewProblem.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
-	<script><!--Logout->
-		function signOut() {
-			var auth2 = gapi.auth2.getAuthInstance();
-			auth2.signOut().then(function () {
-			  console.log('Logout Com Sucesso!');
-			  window.location.href ="index.php";
-			});
-		  }
-	</script>
 	
 	<div class="tab-container"><!-- Lista De Problemas -->
         <h2 align ="left">Seleção de Problemas do URI Online Judge!</h2><br>
