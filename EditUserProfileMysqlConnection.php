@@ -13,14 +13,15 @@
 <body>
 	<?php 
 		$id=$_GET['id'];
-		$nome=$_GET['nome'];
-		$senha=$_GET['senha'];
+		$usuario=$_GET['usuario'];
+		$senha= MD5($_GET['senha']);
 
 		require('Connection.php');
 		
-		$alterar ="update usuario set id='$id', nome='$usuario', senha='$senha' where id='$id' ";
+		echo $senha;
+		
+		$alterar ="update usuario set id='$id', usuario='$usuario', senha='$senha' where id='$id' ";
 		mysqli_query($db,$alterar) or die ('Não foi possível alterar');
 	?>
-	<h1>Alterado Com Sucesso!</h1>
 </body>
 </html>

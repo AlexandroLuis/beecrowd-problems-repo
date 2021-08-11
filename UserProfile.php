@@ -6,6 +6,8 @@
 	ini_set('display_errors', 0 );
 	error_reporting(0);
 	
+	require('Connection.php');
+	
 	session_cache_expire(60);
 	session_start(); 
 	
@@ -19,10 +21,7 @@
 	}
 
 	$id=$_GET['id'];
-	require('Connection.php');
-		
-	$result = mysqli_query($db, "SELECT * FROM usuario where id=$id");
-	$row = mysqli_fetch_assoc($result);
+	
 ?>
 <html>
 	<head>	
@@ -37,7 +36,7 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?>!</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuario']; ?>!</a></li>
 		<li style="float:right"><a href="logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Página de Problemas</a></li>	
 	</ul><!-- Fim Menu Inicial -->
@@ -46,7 +45,9 @@
 	<form class="form-style-8" action="EditUserProfileMysqlConnection.php" method="GET" />
 		<div style="float:center">	
 			<h5 style="float:left">Editar Senha:</h5>
-			<input type="text" class="w3-input" name="name" size="50"><br>
+			<input name="id" type="hidden" value ="<?php echo $row['id']?>"<br>
+			<input name="usuario" type="hidden" value ="<?php echo $row['usuario']?>"<br>
+			<input type="text" class="w3-input" name="senha" size="50"><br>
 			<input type="submit" style="float:right" value="Editar"/><br><br>
 		</div>
 	</form>

@@ -9,6 +9,11 @@
 	session_cache_expire(60);
 	session_start(); 
 	
+	$id=$_GET['id'];
+	require('Connection.php');
+	$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
+	$row = mysqli_fetch_assoc($result);
+	
 	/* REALMENTE PHP ... */
 		$_SESSION['usuario'] = $_COOKIE['usuario'];
 		$_SESSION['id'] = $_COOKIE['id'];
@@ -27,21 +32,14 @@
 		<script src="https://apis.google.com/js/platform.js" async defer></script> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<meta name="google-signin-client_id" content="384602407862-g2t95qbtuto07r923qlic2317dbrkboa.apps.googleusercontent.com">
-		<script>
-			pre{
-				padding: 10px;
-				margin: 0 0 10px;
-				font-size: 13px;
-				color: #000;
-			}
-		</script>
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
 		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?>!</a></li>
 		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>
-		<li style="float:right"><a href="https://e2pc.github.io/">Compilador Online</a></li>		
+		<li style="float:right"><a href="https://e2pc.github.io/">Compilador Online</a></li>	
+		<li	style="float:right"><?php echo"<a href=EditProblemInfo.php?id=".$row['id'] .">Editar</a>" ?></li>		
 	</ul><!-- Fim Menu Inicial -->
 
 	<!-- Recebe Um id Por Parametro e Mostra as informações do exercicio -->
@@ -75,7 +73,7 @@
 		?>
 	</h4>
 
-	<pre background color ="white">
+	<div style="background: #ffffff; overflow:auto;width:auto;border:solid blue;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%; background-color: white; color: black";>
 		<?php
 			require('Connection.php');
 					
@@ -86,6 +84,7 @@
 			printf("%s", $texto);
 			mysqli_free_result($result);
 		?>
-	</pre>
+	</pre></div>
+
 </body>
 </html>
