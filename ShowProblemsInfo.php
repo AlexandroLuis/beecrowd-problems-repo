@@ -26,7 +26,7 @@
 <html>
 	<head>
 		<title>Informações do exercicio</title>
-		<meta charset="utf-8">
+		<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 		<link rel="stylesheet" href="Style/style.css">
 		<link rel="shortcut icon" href="Images/favicon.ico" />	
 		<script src="https://apis.google.com/js/platform.js" async defer></script> 
@@ -57,7 +57,19 @@
 					 <td>" .$row['name'] ."!</td>";
 			}
 		?>
-	</h2><br>
+	</h2>
+	<h4 align ="center">Indexado por 
+		<?php  
+			$id=$_GET['id'];
+			require('Connection.php');
+						
+			$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
+
+			while($row = mysqli_fetch_assoc($result)){
+				echo $row['uploader']  ;
+			}
+		?>.
+	</h4>
 	<h4 align ="left"> 
 		<?php  
 			$id=$_GET['id'];
@@ -67,13 +79,13 @@
 
 			while($row = mysqli_fetch_assoc($result)){
 				echo"Descrição: " .$row['description'] ."\n";
-				?><br><?php
+				?><br><br><?php
 				echo"Observações: " .$row['Observation'] ."";
 			}
 		?>
 	</h4>
 
-	<div style="background: #ffffff; overflow:auto;width:auto;border:solid blue;border-width:.1em .1em .1em .8em;padding:.2em .6em;"><pre style="margin: 0; line-height: 125%; background-color: white; color: black";>
+	<div style="background: #ffffff; overflow:auto;height:68%;width:auto;border:solid blue;border-width:.1em .8em .1em .8em;padding:.2em .6em;"><pre style=" border:2px solid white; margin: 0; line-height: 125%; background-color: white; color: black";>
 		<?php
 			require('Connection.php');
 					

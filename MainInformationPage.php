@@ -23,7 +23,7 @@
 		<title>Uriexamples</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="Style/style.css">
-		<link rel="shortcut icon" href="Images/favicon.ico" />
+		<link rel="shortcut icon" href="Images\favicon.ico" />
 		<script src="https://apis.google.com/js/platform.js" async defer></script> 
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
 		<meta name="google-signin-client_id" content="384602407862-g2t95qbtuto07r923qlic2317dbrkboa.apps.googleusercontent.com">
@@ -68,8 +68,9 @@
 							<a href="?Order=level2pc&Value=desc">Decrescente</a>
 						</div>
 				</th>
-				<th width="200">Mais Informações</th>
-				<th width="150">Editar Problemas</th>
+				<th width="150">Opções</th>
+				<th width="150"></th>
+				<th width="100"></th>
             </tr><!-- Fim Lista de Problemas -->
 			
 			<script><!-- Função para fazer o  dropdown -->
@@ -122,8 +123,8 @@
 							<td>" .$row['level'] ."</td>
 							<td>" .$row['type'] ."</td>
 							<td>" .$row['level2pc'] ."</td>
-							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar</a></td>
-							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar</a></td>";
+							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar Código</a></td>
+							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar Problema</a></td>";
 				}
 				mysqli_free_result($result);
 			?>

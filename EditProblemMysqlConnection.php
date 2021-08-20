@@ -22,10 +22,11 @@
 		$level=$_GET['level'];		
 		$Observation=$_GET['Observation'];	
 		$source=$_GET['source'];
+		$uploader=$_GET ['uploader'];
 		
 		require('Connection.php');
 		//$alterar ="update usuarios set id='$id', name='$name', description='$description', level2pc='$level2pc', level='$level', Observation='$Observation' where id='$id' ";
-		$alterar ="update exercicio set id='$id', name='$name', class='$class', description='$description', type='$type', level2pc='$level2pc', level='$level', status='$status', Observation='$Observation', source='$source' where id='$id' ";
+		$alterar ="update exercicio set id='$id', name='$name', class='$class', description='$description', type='$type', level2pc='$level2pc', level='$level', status='$status', Observation='$Observation', source='$source', uploader='$uploader' where id='$id' ";
 		mysqli_query($db,$alterar) or die ('Não foi possível alterar');
 	?>
 	<h1>Alterado Com Sucesso!</h1>

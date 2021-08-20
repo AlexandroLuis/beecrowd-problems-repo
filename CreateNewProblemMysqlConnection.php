@@ -25,16 +25,17 @@
 		$level=$_POST ['level'];
 		$Observation=$_POST ['Observation'];
 		$source=$_POST ['source'];
+		$uploader=$_POST ['uploader'];
+		
+		$source = preg_replace("\n", "\\n", '$source');
+		echo $source;
+		Require ('Connection.php');
+		$sqlinsert ="insert into exercicio values ('$id','$name','$class','$description','$type','$level2pc','$level','0','$Observation','$source','$uploader')";
+		
+		mysqli_query($db, $sqlinsert) or die ('ERRO!');
 		
 		echo"Valor de Código a ser guardado: ";
 		echo nl2br($_POST['source']);
-		
-			
-		
-		Require ('Connection.php');
-		$sqlinsert ="insert into exercicio values ('$id','$name','$class','$description','$type','$level2pc','$level','0','$Observation','$source')";
-		
-		mysqli_query($db, $sqlinsert) or die ('ERRO!');
 		echo "<script> alert ('cadastro realizado com sucesso :)')</script>"; 
 	?>
 </body>
