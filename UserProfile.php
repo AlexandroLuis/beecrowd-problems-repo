@@ -11,10 +11,6 @@
 	session_cache_expire(60);
 	session_start(); 
 	
-	/* REALMENTE PHP ... */
-		$_SESSION['usuario'] = $_COOKIE['usuario'];
-		$_SESSION['id'] = $_COOKIE['id'];
-
 	if(!$_SESSION['usuario']) {
 		header('Location: index.php');
 		exit();

@@ -13,10 +13,6 @@
 	require('Connection.php');
 	$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");
 	$row = mysqli_fetch_assoc($result);
-	
-	/* REALMENTE PHP ... */
-		$_SESSION['usuario'] = $_COOKIE['usuario'];
-		$_SESSION['id'] = $_COOKIE['id'];
 
 	if(!$_SESSION['usuario']) {
 		header('Location: index.php');

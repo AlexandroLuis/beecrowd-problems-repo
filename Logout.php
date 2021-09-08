@@ -1,8 +1,5 @@
 <?php
-	session_start();
-	unset($_COOKIE['usuario']);	 
-	session_destroy();
-
-	header("Location: index.php");
-	exit;
-?>
+      session_start(); // Inicia a sessão
+      session_destroy(); // Destrói a sessão limpando todos os valores salvos
+      header("Location: index.php"); exit; // Redireciona o visitante
+  ?>
