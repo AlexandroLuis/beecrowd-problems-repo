@@ -10,6 +10,6 @@
         $dbport = '3306';
 	
 	//Conecta ao banco de dados
-	$db=Mysqli_Connect($hostname, $username, $pass);	 
+	$db=Mysqli_Connect($hostname, $username, $pass, $dbport);	 
 	Mysqli_Select_db($db, $bd);	
 ?>
