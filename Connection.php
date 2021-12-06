@@ -1,9 +1,4 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2020
--->
-
-<?PHP 
+<?php
 	$hostname='localhost';	//Nome do Servidor
 	$username='root';		//Nome do Usuario do servidor
 	$pass='';				//Senha do servidor

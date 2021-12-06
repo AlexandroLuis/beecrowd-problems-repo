@@ -1,7 +1,3 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2021
--->
 <html>
 <head>
 	<meta charset="utf-8">

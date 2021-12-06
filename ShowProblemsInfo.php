@@ -1,7 +1,3 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2020
--->
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
@@ -81,7 +77,8 @@
 		?>
 	</h4>
 
-	<div style="background: #ffffff; overflow:auto;height:68%;width:auto;border:solid blue;border-width:.1em .8em .1em .8em;padding:.2em .6em;"><pre style=" border:2px solid white; margin: 0; line-height: 125%; background-color: white; color: black";>
+	<div style="background: #ffffff; overflow:auto;height:68%;width:auto;border:solid blue;border-width:.1em .8em .1em .8em;padding:.2em .6em;">
+		<textarea readonly style="border: none;outline: none;width: 100%;height: 100%;resize:none;">
 		<?php
 			require('Connection.php');
 					
@@ -92,7 +89,7 @@
 			printf("%s", $texto);
 			mysqli_free_result($result);
 		?>
-		<br>
-	</pre></div>
+		</textarea>
+	</div>
 </body>
 </html>

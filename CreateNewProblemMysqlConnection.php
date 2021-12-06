@@ -1,7 +1,3 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2020
--->
 <?php
 		ini_set('display_errors', 0 );
 		error_reporting(0);
@@ -27,8 +23,6 @@
 		$source=$_POST ['source'];
 		$uploader=$_POST ['uploader'];
 		
-		$source = preg_replace("\n", "\\n", '$source');
-		echo $source;
 		Require ('Connection.php');
 		$sqlinsert ="insert into exercicio values ('$id','$name','$class','$description','$type','$level2pc','$level','0','$Observation','$source','$uploader')";
 		

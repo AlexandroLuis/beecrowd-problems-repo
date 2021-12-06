@@ -1,7 +1,3 @@
-<!--  
-	Desenvolvido por https://github.com/AlexandroLuis
-	Versão 1.0 - 2020
--->
 <?php
 	ini_set('display_errors', 0 );
 	error_reporting(0);
