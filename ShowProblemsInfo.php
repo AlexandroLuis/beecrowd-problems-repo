@@ -31,11 +31,11 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?>!</a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuario']; ?>!</a></li>
 		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>
 		<li style="float:right"><a href="https://e2pc.github.io/">Compilador Online</a></li>	
-		<li	style="float:right"><?php echo"<a href=EditProblemInfo.php?id=".$row['id'] .">Editar</a>" ?></li>		
+		<li	style="float:right"><?php echo"<a href=EditProblemInfo.php?id=".$row['id'] .">Editar Problema</a>" ?></li>		
 	</ul><!-- Fim Menu Inicial -->
 
 	<!-- Recebe Um id Por Parametro e Mostra as informações do exercicio -->
@@ -92,7 +92,7 @@
 			printf("%s", $texto);
 			mysqli_free_result($result);
 		?>
+		<br>
 	</pre></div>
-
 </body>
 </html>

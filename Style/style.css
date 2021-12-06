@@ -1,7 +1,16 @@
 body{
 	background-color:white; 
 }
-
+#container table {
+    border-collapse: collapse;
+}
+#container table td {
+    border-top: 2px solid #FFF;   
+}
+#container table tr:hover td {
+    border-top: 2px solid #999;
+    border-bottom: 2px solid #999;
+}
 ul{
 	list-style-type: none;
 	margin: 0;

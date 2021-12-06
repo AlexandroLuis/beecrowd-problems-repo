@@ -12,22 +12,22 @@
 </head>
 <body>
 	<?php 
-		$class=$_GET['class'];
-		$type=$_GET['type'];
-		$status=$_GET['status'];
-		$id=$_GET['id'];
-		$name=$_GET['name'];
-		$description=$_GET['description'];		
-		$level2pc=$_GET['level2pc'];
-		$level=$_GET['level'];		
-		$Observation=$_GET['Observation'];	
-		$source=$_GET['source'];
-		$uploader=$_GET ['uploader'];
+		$class=$_POST['class'];
+		$type=$_POST['type'];
+		$status=$_POST['status'];
+		$id=$_POST['id'];
+		$name=$_POST['name'];
+		$description=$_POST['description'];		
+		$level2pc=$_POST['level2pc'];
+		$level=$_POST['level'];		
+		$Observation=$_POST['Observation'];	
+		$source=$_POST['source'];
+		$uploader=$_POST['uploader'];
 		
 		require('Connection.php');
 		$alterar ="update exercicio set id='$id', name='$name', class='$class', description='$description', type='$type', level2pc='$level2pc', level='$level', status='$status', Observation='$Observation', source='$source', uploader='$uploader' where id='$id' ";
 		mysqli_query($db,$alterar) or die ('Não foi possível alterar');
 	?>
-	<h1>Alterado Com Sucesso!</h1>
+	<h1 align="center"> Editando... :) </h1>
 </body>
 </html>

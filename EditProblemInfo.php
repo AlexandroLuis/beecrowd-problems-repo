@@ -32,9 +32,9 @@
 	</head>
 <body>
 	<ul><!-- Menu Inicial -->
-		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_COOKIE['usuario']; ?></a></li>
+		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuario']; ?>!</a></li>
 		<li style="float:right"><a href="Logout.php">Sair</a></li>
-		<li style="float:right"><a href="MainInformationPage.php">Voltar</a></li>	
+		<li style="float:right"><a href="ShowProblemsInfo.php?id=<?php echo $row['id']?>">Voltar</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 
     <h2 align ="center">Editar Informações do Exercício 
@@ -52,7 +52,7 @@
 			}
 		?>
 	</h2>
-	<form class="form-style-8" action="EditProblemMysqlConnection.php" method="GET" />
+	<form class="form-style-8" action="EditProblemMysqlConnection.php" method="POST">
 		<div style="float:center">
 			<input name="class" type="hidden" value ="<?php echo $row['class']?>"<br>
 			<input name="type" type="hidden" value ="<?php echo $row['type']?>"<br>
@@ -71,7 +71,7 @@
 			<input type="text" class="w3-input" name="Observation" size="50" value="<?php echo $row['Observation']?>"/><br>
 			<h5 style="float:left">Código:</h5>
 			<br><textarea name="source" rows="1000" cols="70"><?php echo $row['source']?></textarea><br>
-			<input name="uploader" type="hidden" value ="<?php echo $_SESSION['usuario']?>"<br>
+			<input name="uploader" type="hidden" value ="<?php echo $row['usuario']?>"<br>
 			<input type="submit" style="float:right" value="Editar"/><br><br>
 		</div>
 	</form>

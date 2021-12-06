@@ -4,7 +4,6 @@
 -->
 
 <?PHP 
-	//localhost
 	$hostname='localhost';	//Nome do Servidor
 	$username='root';		//Nome do Usuario do servidor
 	$pass='';				//Senha do servidor

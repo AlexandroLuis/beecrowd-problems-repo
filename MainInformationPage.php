@@ -31,14 +31,14 @@
 		<li style="float:right"><a href="CreateNewProblem.php">Inserir Novo</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 	
-	<div class="tab-container"><!-- Lista De Problemas -->
-        <h2 align ="left">Seleção de Problemas do URI Online Judge!</h2><br>
-        <table border="0" style="text-align:left;">
+	<div class="tab-container" id="container"><!-- Lista De Problemas -->
+        <h2 align ="left">Seleção de Problemas do BeeCrowd!</h2><br>
+        <table style="text-align:left;">
             <tr>
 				<th width="10"></th>
                 <th width="75">ID</th>
-                <th width="270">Nome</th>				
-				<th width="200">
+                <th width="320">Nome</th>				
+				<th width="250">
 					<a onclick="classificacao()" class="dropbtn">Categoria</a>
 						<div id="classificacao" class="dropdown-content">
 							<a href="?Order=class">Ordenar por Categoria</a>
@@ -51,22 +51,20 @@
 							<a href="?Order=level&Value=desc">Decrescente</a>
 						</div>
 				</th>
-				<th width="220">
+				<th width="300">
 					<a onclick="tipo()" class="dropbtn">Classificação</a>
 						<div id="tipo" class="dropdown-content">
 							<a href="?Order=type">Ordenar Por tipo</a>
 						</div>
 				</th>			 					
-				<th width="140" >
+				<th width="100" >
 					<a onclick="dificuldadee2pc()" class="dropbtn">Dificuldade</a>
 						<div id="dificuldadee2pc" class="dropdown-content">
 							<a href="?Order=level2pc&Value=asc">Crescente</a>
 							<a href="?Order=level2pc&Value=desc">Decrescente</a>
 						</div>
 				</th>
-				<th width="150">Opções</th>
-				<th width="150"></th>
-				<th width="100"></th>
+				<th width="180">Código & Informações</th>
             </tr><!-- Fim Lista de Problemas -->
 			
 			<script><!-- Função para fazer o  dropdown -->
@@ -119,8 +117,7 @@
 							<td>" .$row['level'] ."</td>
 							<td>" .$row['type'] ."</td>
 							<td>" .$row['level2pc'] ."</td>
-							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar Código</a></td>
-							<td>" ."<a href=EditProblemInfo.php?id=".$row['id'] ."> Editar Problema</a></td>";
+							<td>" ."<a href=ShowProblemsInfo.php?id=".$row['id'] .">Mostrar Informações</a></td>";
 				}
 				mysqli_free_result($result);
 			?>
