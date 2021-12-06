@@ -80,6 +80,7 @@
 	<div style="background: #ffffff; overflow:auto;height:68%;width:auto;border:solid blue;border-width:.1em .8em .1em .8em;padding:.2em .6em;">
 		<textarea readonly style="border: none;outline: none;width: 100%;height: 100%;resize:none;">
 		<?php
+			echo "\n";
 			require('Connection.php');
 					
 			$result = mysqli_query($db, "SELECT * FROM exercicio where id=$id");

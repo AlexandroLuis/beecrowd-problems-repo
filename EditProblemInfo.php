@@ -67,7 +67,7 @@
 			<input type="text" class="w3-input" name="Observation" size="50" value="<?php echo $row['Observation']?>"/><br>
 			<h5 style="float:left">Código:</h5>
 			<br><textarea name="source" rows="1000" cols="70"><?php echo $row['source']?></textarea><br>
-			<input name="uploader" type="hidden" value ="<?php echo $row['usuario']?>"<br>
+			<input name="uploader" type="hidden" value ="<?php echo $row['uploader']?>"/><br>
 			<input type="submit" style="float:right" value="Editar"/><br><br>
 		</div>
 	</form>

@@ -59,7 +59,7 @@
 			</div>
 			<h5 style="float:left">Código:</h5>
 			<br><textarea type="text" name="source" rows="10" cols="52" ></textarea> 
-			<input name="uploader" type="hidden" value ="<?php echo $_SESSION['usuario']?>"<br>
+			<input name="uploader" type="hidden" value ="<?php echo $_SESSION['usuario']?>"><br>
 			<input type="submit" value="Enviar" />
 		</div>
 	</form>

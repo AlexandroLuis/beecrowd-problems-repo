@@ -29,7 +29,7 @@
 <body>
 	<ul><!-- Menu Inicial -->
 		<li style="float:left"><a href="UserProfile.php"><?php session_start(); echo "Olá, ". $_SESSION['usuario']; ?>!</a></li>
-		<li style="float:right"><a href="logout.php">Sair</a></li>
+		<li style="float:right"><a href="Logout.php">Sair</a></li>
 		<li style="float:right"><a href="MainInformationPage.php">Página de Problemas</a></li>	
 	</ul><!-- Fim Menu Inicial -->
 
