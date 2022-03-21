@@ -1,31 +1,6 @@
--- phpMyAdmin SQL Dump
--- version 5.1.0
--- https://www.phpmyadmin.net/
---
--- Host: 127.0.0.1
--- Generation Time: Dec 06, 2021 at 04:47 PM
--- Server version: 10.4.19-MariaDB
--- PHP Version: 8.0.6
-
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
 SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `uriexamples`
---
-
--- --------------------------------------------------------
-
---
--- Table structure for table `exercicio`
---
 
 CREATE TABLE `exercicio` (
   `id` int(11) NOT NULL,
@@ -41,9 +16,34 @@ CREATE TABLE `exercicio` (
   `uploader` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
---
--- Dumping data for table `exercicio`
---
+CREATE TABLE `usuario` (
+  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
+  `usuario` varchar(30) DEFAULT NULL,
+  `senha` varchar(40) DEFAULT NULL
+) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
+
+ALTER TABLE `exercicio`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `usuario`
+  ADD PRIMARY KEY (`id`);
+  
+ALTER TABLE `usuario`
+  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+COMMIT;
+
+INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
+(0000000001, 'admin', '123'),
+(0000000002, 'admin2', '202cb962ac59075b964b07152d234b70'),
+(0000000003, 'admin4', '202cb962ac59075b964b07152d234b70'),
+(0000000004, 'Admin 5', '81dc9bdb52d04dc20036dbd8313ed055'),
+(0000000005, 'Admin 7', '202cb962ac59075b964b07152d234b70'),
+(0000000006, 'USER1', '827ccb0eea8a706c4c34a16891f84e7b'),
+(0000000007, 'USER2', '202cb962ac59075b964b07152d234b70'),
+(0000000008, 'admin04', '202cb962ac59075b964b07152d234b70'),
+(0000000009, 'Teste123', '202cb962ac59075b964b07152d234b70'),
+(0000000010, 'alexandro', '202cb962ac59075b964b07152d234b70'),
+(0000000011, 'Alexandro', '4a7d1ed414474e4033ac29ccb8653d9b');
 
 INSERT INTO `exercicio` (`id`, `name`, `class`, `description`, `type`, `level2pc`, `level`, `status`, `Observation`, `source`, `uploader`) VALUES
 (1, 'OI', 'Nível Iniciante.', 'OI', 'Vetores e matrizes.', 01, 01, 0, 'OI', '#include <iostream>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int cont, maior = -1;\r\n\r\n    cin >> cont;\r\n    int voto[cont];\r\n    for(int i = 0; i < cont; i++)\r\n    {\r\n        cin >> voto[i];\r\n        if(voto[i] > maior)\r\n            maior = voto[i];\r\n\r\n    }\r\n    if( maior == voto[0])\r\n        cout << \"S\" << endl;\r\n    else\r\n        cout << \"N\" << endl;\r\n}#include <iostream>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int cont, maior = -1;\r\n\r\n    cin >> cont;\r\n    int voto[cont];\r\n    for(int i = 0; i < cont; i++)\r\n    {\r\n        cin >> voto[i];\r\n        if(voto[i] > maior)\r\n            maior = voto[i];\r\n\r\n    }\r\n    if( maior == voto[0])\r\n        cout << \"S\" << endl;\r\n    else\r\n        cout << \"N\" << endl;\r\n}#include <iostream>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int cont, maior = -1;\r\n\r\n    cin >> cont;\r\n    int voto[cont];\r\n    for(int i = 0; i < cont; i++)\r\n    {\r\n        cin >> voto[i];\r\n        if(voto[i] > maior)\r\n            maior = voto[i];\r\n\r\n    }\r\n    if( maior == voto[0])\r\n        cout << \"S\" << endl;\r\n    else\r\n        cout << \"N\" << endl;\r\n}#include <iostream>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int cont, maior = -1;\r\n\r\n    cin >> cont;\r\n    int voto[cont];\r\n    for(int i = 0; i < cont; i++)\r\n    {\r\n        cin >> voto[i];\r\n        if(voto[i] > maior)\r\n            maior = voto[i];\r\n\r\n    }\r\n    if( maior == voto[0])\r\n        cout << \"S\" << endl;\r\n    else\r\n        cout << \"N\" << endl;\r\n}#include <iostream>\r\n\r\nusing namespace std;\r\n\r\nint main()\r\n{\r\n    int cont, maior = -1;\r\n\r\n    cin >> cont;\r\n    int voto[cont];\r\n    for(int i = 0; i < cont; i++)\r\n    {\r\n        cin >> voto[i];\r\n        if(voto[i] > maior)\r\n            maior = voto[i];\r\n\r\n    }\r\n    if( maior == voto[0])\r\n        cout << \"S\" << endl;\r\n    else\r\n        cout << \"N\" << endl;\r\n}', ''),
@@ -71,63 +71,3 @@ INSERT INTO `exercicio` (`id`, `name`, `class`, `description`, `type`, `level2pc
 (8842, 'teste barra ene', 'Nível Iniciante.', '', '', 01, 01, 0, '', 'int main(){\r\nprintf(\"%d\\n\", oi);\r\n}', 'admin4'),
 (57458, '', 'Nível Iniciante.', '', '', 00, 00, 0, '', '', 'admin4'),
 (65658, '', 'Nível Iniciante.', '', '', 00, 00, 0, '', '\n', 'admin4');
-
--- --------------------------------------------------------
-
---
--- Table structure for table `usuario`
---
-
-CREATE TABLE `usuario` (
-  `id` int(10) UNSIGNED ZEROFILL NOT NULL,
-  `usuario` varchar(30) DEFAULT NULL,
-  `senha` varchar(40) DEFAULT NULL
-) ENGINE=MyISAM DEFAULT CHARSET=utf8mb4;
-
---
--- Dumping data for table `usuario`
---
-
-INSERT INTO `usuario` (`id`, `usuario`, `senha`) VALUES
-(0000000001, 'admin', '123'),
-(0000000002, 'admin2', '202cb962ac59075b964b07152d234b70'),
-(0000000003, 'admin4', '202cb962ac59075b964b07152d234b70'),
-(0000000004, 'Admin 5', '81dc9bdb52d04dc20036dbd8313ed055'),
-(0000000005, 'Admin 7', '202cb962ac59075b964b07152d234b70'),
-(0000000006, 'USER1', '827ccb0eea8a706c4c34a16891f84e7b'),
-(0000000007, 'USER2', '202cb962ac59075b964b07152d234b70'),
-(0000000008, 'admin04', '202cb962ac59075b964b07152d234b70'),
-(0000000009, 'Teste123', '202cb962ac59075b964b07152d234b70'),
-(0000000010, 'alexandro', '202cb962ac59075b964b07152d234b70'),
-(0000000011, 'Alexandro', '4a7d1ed414474e4033ac29ccb8653d9b');
-
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `exercicio`
---
-ALTER TABLE `exercicio`
-  ADD PRIMARY KEY (`id`);
-
---
--- Indexes for table `usuario`
---
-ALTER TABLE `usuario`
-  ADD PRIMARY KEY (`id`);
-
---
--- AUTO_INCREMENT for dumped tables
---
-
---
--- AUTO_INCREMENT for table `usuario`
---
-ALTER TABLE `usuario`
-  MODIFY `id` int(10) UNSIGNED ZEROFILL NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
-COMMIT;
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
