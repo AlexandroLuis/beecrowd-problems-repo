@@ -20,11 +20,11 @@
         }
 		else{    
             $_SESSION['loginErro'] = "Usuário ou senha Inválido";
-            header("Location: index.php");
+			echo"<script language='javascript' type='text/javascript'> alert('Usuário ou senha Inválido');window.location.href='index.php'</script>";
         }
     }
 	else{
         $_SESSION['loginErro'] = "Usuário ou senha inválido";
-        header("Location: index.php");
+		echo"<script language='javascript' type='text/javascript'> alert('Erro de Login!');window.location.href='index.php'</script>";
     }
 ?>

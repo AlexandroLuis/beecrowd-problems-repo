@@ -1,33 +1,50 @@
-<?php
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Criar Usuario - BeeCrowd Problems</title>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/all.css'>
+  <link rel='stylesheet' href='https://use.fontawesome.com/releases/v5.2.0/css/fontawesome.css'>
+  <link rel="stylesheet" href="Style/style_index.css">
 
-	$usuario = $_POST['usuario'];
-	$senha = MD5($_POST['senha']);
-	
-	require('Connection.php');
-	
-	$query_select = "SELECT usuario FROM usuario WHERE usuario = '$usuario'";
-	$select = mysqli_query($db, $query_select);
-	$array = mysqli_fetch_array($select);
-	$logarray = $array['usuario'];
-
-	if($_POST['admkey'] == '0000'){
-		if($usuario == "" || $usuario == null)
-			echo"<script language='javascript' type='text/javascript'> alert('O campo login deve ser preenchido');window.location.href='index.php';</script>";		
-		else{
-			if($logarray == $usuario){
-				echo"<script language='javascript' type='text/javascript'> alert('Esse login já existe');window.location.href='index.php';</script>";
-				die();
-			}else{
-				$query = "INSERT INTO usuario (usuario,senha) VALUES ('$usuario','$senha')";
-				$insert = mysqli_query($db, $query);
-				if($insert)
-					echo"<script language='javascript' type='text/javascript'> alert('Usuário cadastrado com sucesso!');window.location.href='index.php'</script>";
-				else
-					echo"<script language='javascript' type='text/javascript'> alert('Não foi possível cadastrar esse usuário');window.location.href='index.php'</script>";
-			}
-		}	
-	}
-	else
-		echo"<script language='javascript' type='text/javascript'> alert('Inrira sua chave de desenvolvedor');window.location.href='index.php'</script>";
-
-?>
+</head>
+<body>
+<!-- partial:index.partial.html -->
+<div class="container">
+	<div class="screen">
+		<div class="screen__content">
+			<form class="login" method="POST" action="CreateNewUserMysqlConnection.php">
+				<div class="login__field">
+					<i class="login__icon fas fa-key"></i>
+					<input type="text" class="login__input" name="admkey" placeholder="Chave de Administrador">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-user"></i>
+					<input type="text" class="login__input" name="usuario" placeholder="Usuario">
+				</div>
+				<div class="login__field">
+					<i class="login__icon fas fa-lock"></i>
+					<input type="password" class="login__input" name="senha" placeholder="Senha">
+				</div>
+				<button class="button login__submit">
+					<span class="button__text">Cadastrar</span>
+					<i class="button__icon fas fa-chevron-right"></i>
+				</button>				
+			</form>
+			<div class="social-login">
+				<br><br>
+				<h3>Entre em sua conta</h3><a href="index.php" style="text-decoration: none; color: white">Clique Aqui</a>
+			</div>
+		</div>
+		<div class="screen__background">
+			<span class="screen__background__shape screen__background__shape4"></span>
+			<span class="screen__background__shape screen__background__shape3"></span>		
+			<span class="screen__background__shape screen__background__shape2"></span>
+			<span class="screen__background__shape screen__background__shape1"></span>
+		</div>		
+	</div>
+</div>
+<!-- partial -->
+  
+</body>
+</html>
